@@ -1,5 +1,32 @@
+/*
+First duplicate means the first number that comes up that has already been seen. 
+As soon as we find it we can stop iterating
+If no two numbers are the same we stop
+Array could have differnt data types. we should check strictly so 2 !== '2'
+
+We CANNOT  sort it first which makes checking easier, no need to store what we've checked so far in memory
+and do a lookup. Requires us finding the first duplicate (hence keeping the order). 
+
+Worst option is run a nested loop which is O(n^2)
+Other option is keep a dict to track numbers we've already seen. O(n) 
+
+
+*/
+
 function findFirstDuplicate(arr) {
-  // type your code here
+  if (arr.length < 2) return -1;
+
+  const seenValues = {};
+
+  for (el of arr){
+    console.log(el, seenValues);
+    console.log(el, seenValues);
+    if (seenValues[el] !== undefined) return el;
+    seenValues[el] = 1;
+  }
+
+  return -1
+
 }
 
 if (require.main === module) {
